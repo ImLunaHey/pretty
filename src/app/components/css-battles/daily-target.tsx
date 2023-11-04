@@ -6,10 +6,10 @@ export const DailyTarget: React.FC<{
   children: React.ReactNode;
 }> = ({ children, href }) => {
   return (
-    <div className="relative w-full h-[100vh]">
+    <div className="relative w-screen h-screen">
       {children}
       <a
-        className="absolute text-sm left-2 bottom-2 font-mono p-2 bg-white border rounded"
+        className="absolute text-sm left-10 bottom-10 font-mono p-2 bg-white border rounded w-min md:w-fit"
         href={href}
       >
         {href}
