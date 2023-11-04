@@ -1,6 +1,7 @@
 "use client";
 import { DailyTarget, battles } from "./components/css-battles/daily-target";
 import { GlowingSquares } from "./components/glowing-squares/glowing-squares";
+import { Pixel } from "./components/pixel";
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
           </div>
         );
       })}
+
+      <Pixel domain="pretty.fish.lgbt" />
     </main>
   );
 }
