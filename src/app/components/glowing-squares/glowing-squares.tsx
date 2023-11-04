@@ -6,7 +6,7 @@ const Square = () => {
   return <Glow width={50} height={50} />;
 };
 
-export const Squares = () => {
+export const GlowingSquares = () => {
   const windowSize = useWindowSize();
   if (!windowSize.width || !windowSize.height) return null;
 
@@ -23,12 +23,25 @@ export const Squares = () => {
 
   return (
     <div
-      className="w-screen h-full grid overflow-hidden justify-center"
       style={{
-        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+        color: "rgb(var(--foreground-rgb))",
+        background: `linear-gradient(
+          to bottom,
+          transparent,
+          rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb))`,
       }}
+      className="relative w-full h-[100vh] snap-proximity"
     >
-      {squares}
+      <div
+        className="w-screen h-full grid overflow-hidden justify-center"
+        style={{
+          gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+        }}
+      >
+        {squares}
+      </div>
     </div>
   );
 };
