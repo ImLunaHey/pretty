@@ -26,15 +26,15 @@ type Battle = {
 
 export const battles = [
   {
+    href: "https://cssbattle.dev/play/taLJyz4IamvfctMx4z3Q",
+    component: DailyTargets_02112023,
+  },
+  {
     href: "https://cssbattle.dev/play/Wu3QnyC0Fh2okPAZRzjq",
     component: DailyTarget_03112023,
   },
   {
     href: "https://cssbattle.dev/play/2S2kJuGL3a15M9HieIQ4",
     component: DailyTarget_04112023,
-  },
-  {
-    href: "https://cssbattle.dev/play/taLJyz4IamvfctMx4z3Q",
-    component: DailyTargets_02112023,
   },
 ] satisfies Battle[];
