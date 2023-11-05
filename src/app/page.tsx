@@ -10,15 +10,17 @@ export default function Home() {
         <GlowingSquares />
       </div>
 
-      {battles.map(({ href, component: Component }) => {
-        return (
-          <div key={href} id={href.split("/").pop()} className="snap-start">
-            <DailyTarget href={href}>
-              <Component />
-            </DailyTarget>
-          </div>
-        );
-      })}
+      {battles
+        .sort((battle) => new Date(battle.date).getTime())
+        .map(({ href, component: Component, date }) => {
+          return (
+            <div key={href} id={href.split("/").pop()} className="snap-start">
+              <DailyTarget href={href}>
+                <Component />
+              </DailyTarget>
+            </div>
+          );
+        })}
 
       <Pixel domain="pretty.fish.lgbt" />
     </main>
