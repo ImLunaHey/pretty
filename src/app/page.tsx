@@ -12,7 +12,7 @@ export default function Home() {
 
       {battles.map(({ href, component: Component }) => {
         return (
-          <div key={href} className="snap-start">
+          <div key={href} id={href.split("/").pop()} className="snap-start">
             <DailyTarget href={href}>
               <Component />
             </DailyTarget>
