@@ -32,10 +32,10 @@ export const GlowingSquares = () => {
         )
         rgb(var(--background-start-rgb))`,
       }}
-      className="relative h-screen w-screen snap-proximity"
+      className="relative w-full h-full snap-proximity"
     >
       <div
-        className="w-screen h-full grid overflow-hidden justify-center"
+        className="w-full h-full grid overflow-hidden justify-center"
         style={{
           gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
         }}

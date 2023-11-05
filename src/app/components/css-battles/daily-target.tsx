@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { DailyTargets_01112023 } from "./daily-targets/01-11-2023";
 import { DailyTargets_02112023 } from "./daily-targets/02-11-2023";
 import { DailyTargets_03112023 } from "./daily-targets/03-11-2023";
@@ -5,20 +6,39 @@ import { DailyTargets_04112023 } from "./daily-targets/04-11-2023";
 import { DailyTargets_28072023 } from "./daily-targets/28-07-2023";
 import { DailyTargets_30102023 } from "./daily-targets/30-10-2023";
 import { DailyTargets_31102023 } from "./daily-targets/31-10-2023";
+import { motion } from "framer-motion";
 
 export const DailyTarget: React.FC<{
   href: string;
   children: React.ReactNode;
 }> = ({ children, href }) => {
+  const [expanded, setExpanded] = useState(true);
   return (
-    <div className="relative w-screen h-screen">
-      {children}
+    <div className="w-screen h-screen relative">
+      <motion.div
+        className="relative w-screen h-screen"
+        animate={{
+          width: expanded ? "100vw" : "400px",
+          height: expanded ? "100vh" : "300px",
+          left: expanded ? 0 : "calc(50% - 200px)",
+          top: expanded ? 0 : "calc(50% - 150px)",
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        {children}
+      </motion.div>
       <a
-        className="absolute text-sm left-10 bottom-10 font-mono p-2 bg-white border rounded w-min md:w-fit"
+        className="absolute text-sm left-10 bottom-10 font-mono p-2 bg-white w-min md:w-fit border-2 border-black rounded"
         href={href}
       >
         {href}
       </a>
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="absolute top-2 right-2 bg-white p-2 border-2 border-black rounded"
+      >
+        {expanded ? "full page" : "400x300"}
+      </button>
     </div>
   );
 };

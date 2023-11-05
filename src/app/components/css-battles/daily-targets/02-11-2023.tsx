@@ -1,6 +1,6 @@
 export const DailyTargets_02112023 = () => {
   return (
-    <div className="bg-[#cbc35c] w-screen h-screen">
+    <div className="bg-[#cbc35c] w-full h-full">
       <div
         className="absolute w-[125px] h-[75px] top-[75px] left-[75px] bg-[#fffac2]"
         style={{
