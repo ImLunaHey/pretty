@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/cn";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useState } from "react";
 
 export const Glow: React.FC<{
   children?: React.ReactNode;
@@ -8,6 +9,7 @@ export const Glow: React.FC<{
   height?: number;
   background?: string;
 }> = ({ children, width = 200, height = 200, background = "black" }) => {
+  const controls = useAnimation();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,6 +19,21 @@ export const Glow: React.FC<{
         width,
         height,
         background,
+      }}
+      onHoverStart={() => {
+        controls.start({
+          rotate: 360,
+          transition: {
+            ease: "linear",
+            duration: 3.5,
+            repeat: Infinity,
+          },
+        });
+      }}
+      onHoverEnd={() => {
+        setTimeout(() => {
+          controls.stop();
+        }, 1000);
       }}
     >
       <motion.div
@@ -28,8 +45,8 @@ export const Glow: React.FC<{
           width: width * 1.5,
           height: height * 1.5,
         }}
-        animate={{ rotate: 360 }}
-        transition={{ ease: "linear", duration: 3.5, repeat: Infinity }}
+        animate={controls}
+        transition={controls}
       />
       <div
         className="w-[94%] h-[94%] absolute top-[3%] left-[3%]"
