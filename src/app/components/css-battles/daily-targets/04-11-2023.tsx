@@ -1,4 +1,4 @@
-export const DailyTarget_04112023 = () => {
+export const DailyTargets_04112023 = () => {
   return (
     <div className="bg-[#504B72] relative h-screen w-screen">
       <div className="absolute top-[100px] left-[150px] rotate-45 w-[100px] h-[100px] bg-[#504B72] z-10" />
