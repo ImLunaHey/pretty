@@ -1,6 +1,6 @@
-"use client";
-import { useWindowSize } from "@uidotdev/usehooks";
-import { Glow } from "./glow";
+'use client';
+import { useWindowSize } from '@uidotdev/usehooks';
+import { Glow } from './glow';
 
 const Square = () => {
   return <Glow width={50} height={50} />;
@@ -24,7 +24,7 @@ export const GlowingSquares = () => {
   return (
     <div
       style={{
-        color: "rgb(var(--foreground-rgb))",
+        color: 'rgb(var(--foreground-rgb))',
         background: `linear-gradient(
           to bottom,
           transparent,
