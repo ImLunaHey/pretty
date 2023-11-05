@@ -2,6 +2,7 @@ import { DailyTargets_01112023 } from "./daily-targets/01-11-2023";
 import { DailyTargets_02112023 } from "./daily-targets/02-11-2023";
 import { DailyTargets_03112023 } from "./daily-targets/03-11-2023";
 import { DailyTargets_04112023 } from "./daily-targets/04-11-2023";
+import { DailyTargets_31102023 } from "./daily-targets/31-10-2023";
 
 export const DailyTarget: React.FC<{
   href: string;
@@ -26,6 +27,10 @@ type Battle = {
 };
 
 export const battles = [
+  {
+    href: "https://cssbattle.dev/play/DEZ0vq4BzrnHgCY7ljLv",
+    component: DailyTargets_31102023,
+  },
   {
     href: "https://cssbattle.dev/play/QbKbsSvMnViaoahKjkya",
     component: DailyTargets_01112023,
