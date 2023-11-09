@@ -32,7 +32,7 @@ export const GlowingSquares = () => {
         )
         rgb(var(--background-start-rgb))`,
       }}
-      className="relative w-screen h-screen snap-proximity"
+      className="relative w-screen h-screen"
     >
       <div
         className="w-full h-full grid overflow-hidden justify-center"

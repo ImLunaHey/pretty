@@ -1,7 +1,10 @@
 'use client';
 import { cn } from '@/cn';
 import { motion, useAnimation } from 'framer-motion';
-import { useState } from 'react';
+
+const randomNumberBetween = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 export const Glow: React.FC<{
   children?: React.ReactNode;
@@ -9,11 +12,12 @@ export const Glow: React.FC<{
   height?: number;
   background?: string;
 }> = ({ children, width = 200, height = 200, background = 'black' }) => {
-  const controls = useAnimation();
+  const movementControls = useAnimation();
+  const opacityControls = useAnimation();
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      whileHover={{ opacity: 1 }}
+      animate={opacityControls}
       className="relative overflow-hidden"
       style={{
         width,
@@ -21,7 +25,14 @@ export const Glow: React.FC<{
         background,
       }}
       onHoverStart={() => {
-        controls.start({
+        opacityControls.start({
+          opacity: 1,
+          transition: {
+            ease: 'linear',
+            duration: 1,
+          },
+        });
+        movementControls.start({
           rotate: 360,
           transition: {
             ease: 'linear',
@@ -32,18 +43,28 @@ export const Glow: React.FC<{
       }}
       onHoverEnd={() => {
         setTimeout(() => {
-          controls.stop();
+          opacityControls.start({
+            opacity: 0,
+            transition: {
+              ease: 'linear',
+              duration: 1,
+            },
+          });
+          setTimeout(() => {
+            movementControls.stop();
+          }, 1000);
         }, 1000);
       }}
     >
       <motion.div
+        initial={{ rotate: randomNumberBetween(0, 360) }}
         className={cn('absolute top-[-25%] left-[-25%]', 'bg-gradient-conic from-white to-[transparent]')}
         style={{
           width: width * 1.5,
           height: height * 1.5,
         }}
-        animate={controls}
-        transition={controls}
+        animate={movementControls}
+        transition={movementControls}
       />
       <div
         className="w-[94%] h-[94%] absolute top-[3%] left-[3%]"

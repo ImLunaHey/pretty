@@ -11,7 +11,7 @@ export const DailyTargets_21102023 = () => {
         }}
       />
       <div
-        className="absolute h-[50vh] top-[50%] w-[50vh] min-h-[200px] rounded-[100vh]"
+        className="absolute h-[50dvh] top-[50%] w-[50dvh] min-h-[200px] rounded-[100dvh]"
         style={{
           background: 'rgba(40, 78, 208, 0.9)',
         }}

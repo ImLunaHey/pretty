@@ -21,8 +21,8 @@ export const DailyTarget: React.FC<{
       <motion.div
         className="relative w-screen h-screen overflow-hidden"
         animate={{
-          width: expanded ? '100vw' : '400px',
-          height: expanded ? '100vh' : '300px',
+          width: expanded ? '100dvw' : '400px',
+          height: expanded ? '100dvh' : '300px',
           left: expanded ? 0 : 'calc(50% - 200px)',
           top: expanded ? 0 : 'calc(50% - 150px)',
         }}
