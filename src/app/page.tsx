@@ -1,10 +1,10 @@
 'use client';
-import { DailyTarget, battles } from './components/css-battles/daily-target';
-import { GlowingSquares } from './components/squares/glowing-squares';
-import { Pixel } from './components/pixel';
-import { TrailingSquares } from './components/squares/trailing-squares';
-import { DiscordClone } from './components/discord-clone';
-import { Bento } from './components/bento/bento';
+import { DailyTarget, battles } from '../components/css-battles/daily-target';
+import { GlowingSquares } from '../components/squares/glowing-squares';
+import { Pixel } from '../components/pixel';
+import { TrailingSquares } from '../components/squares/trailing-squares';
+import { DiscordClone } from '../components/discord-clone';
+import { Bento } from '../components/bento/bento';
 import { Suspense, useState } from 'react';
 
 const Loading = () => {
