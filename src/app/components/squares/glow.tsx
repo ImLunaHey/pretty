@@ -36,7 +36,7 @@ export const Glow: React.FC<{
           rotate: 360,
           transition: {
             ease: 'linear',
-            duration: 3.5,
+            duration: 1.5,
             repeat: Infinity,
           },
         });
