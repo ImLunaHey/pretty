@@ -28,12 +28,12 @@ const useLetterIndex = (letter: string, delay: number) => {
           }
           return currentIndex + 1;
         });
-      }, 250);
+      }, 50);
 
       return () => clearInterval(interval);
     },
     [letter],
-    delay * 100,
+    delay * 50,
   );
 
   return index;
