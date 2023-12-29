@@ -2,10 +2,8 @@
 import { DailyTarget, battles } from '../components/css-battles/daily-target';
 import { GlowingSquares } from '../components/squares/glowing-squares';
 import { Pixel } from '../components/pixel';
-import { TrailingSquares } from '../components/squares/trailing-squares';
-import { DiscordClone } from '../components/discord-clone';
-import { Bento } from '../components/bento/bento';
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
+import { VerseTextReveal } from '@/components/verse-text-reveal';
 
 const Loading = () => {
   return (
@@ -42,21 +40,11 @@ export default function Home() {
         </LoadingWrapper>
       </div>
 
-      {/* <div className="snap-start">
+      <div className="snap-start">
         <LoadingWrapper>
-          <Bento />
+          <VerseTextReveal />
         </LoadingWrapper>
-      </div> */}
-
-      {/* <div className="snap-start">
-        <TrailingSquares />
-      </div> */}
-
-      {/* <div className="snap-start">
-        <LoadingWrapper>
-          <DiscordClone />
-        </LoadingWrapper>
-      </div> */}
+      </div>
 
       {battles
         .sort((battle) => new Date(battle.date).getTime())
