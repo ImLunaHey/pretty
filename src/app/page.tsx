@@ -40,7 +40,7 @@ export default function Home() {
         </LoadingWrapper>
       </div>
 
-      <div className="snap-start">
+      <div className="snap-start" id="verse-text-reveal">
         <LoadingWrapper>
           <VerseTextReveal />
         </LoadingWrapper>
