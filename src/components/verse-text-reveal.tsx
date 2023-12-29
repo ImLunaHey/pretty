@@ -1,5 +1,6 @@
 'use client';
 
+import { useIntersectionObserver } from '@uidotdev/usehooks';
 import { DependencyList, EffectCallback, useEffect, useState } from 'react';
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -32,7 +33,7 @@ const useLetterIndex = (letter: string, delay: number) => {
       return () => clearInterval(interval);
     },
     [letter],
-    delay,
+    delay * 100,
   );
 
   return index;
@@ -44,29 +45,46 @@ const Letter: React.FC<{
 }> = ({ letter, delay = 1_000 }) => {
   const index = useLetterIndex(letter, delay);
 
-  return <span className="text-white font-mono">{characters[index]}</span>;
+  return <span className="text-white font-mono">{characters[index] ?? '[ ]'}</span>;
 };
 
 const Reveal = ({ text }: { text: string }) => {
   return (
     <div>
-      {text.split('\n').map((line, i) => {
-        return line.split('').map((letter, j) => {
-          return <Letter key={i} letter={letter} delay={j} />;
-        });
+      {text.split('').map((letter, i) => {
+        return <Letter key={i} letter={letter} delay={i} />;
       })}
     </div>
   );
 };
 
 export const VerseTextReveal = () => {
+  const [inViewPort, setInViewPort] = useState(false);
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0,
+    root: null,
+    rootMargin: '0px',
+  });
+
+  useEffect(() => {
+    if (entry && entry.isIntersecting) {
+      setInViewPort(true);
+    } else {
+      setInViewPort(false);
+    }
+  }, [entry]);
+
   return (
     <div className="text-white relative w-screen h-screen">
       <div className="w-full h-full flex overflow-hidden justify-center items-center">
-        <div className="h-fit w-1/3">
-          <Reveal text="HELLO WORLD" />
-          <Reveal text="THIS IS A LONGER STRING" />
-          <Reveal text="LOREM IPSUM DOLOR SIT AMET MUS FELIS SI NATOQUE. BLANDIT PURUS IACULIS SOLLICITUDIN QUISQUE MAGNIS. VELIT IN SEMPER SUSPENDISSE FEUGIAT CONUBIA EU ULTRICIES" />
+        <div className="h-fit w-1/3" ref={ref}>
+          {inViewPort && (
+            <>
+              <Reveal text="HELLO WORLD" />
+              <Reveal text="THIS IS A LONGER STRING" />
+              <Reveal text="LOREM IPSUM DOLOR SIT AMET MUS FELIS SI NATOQUE. BLANDIT PURUS IACULIS SOLLICITUDIN QUISQUE MAGNIS. VELIT IN SEMPER SUSPENDISSE FEUGIAT CONUBIA EU ULTRICIES" />
+            </>
+          )}
         </div>
       </div>
     </div>
